@@ -2,8 +2,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+n = 0
+per = 0.01
+limit = 5
+x, y = np.array([]), np.array([])
 
-def bn(n): return complex(((((1+5**0.5)/2) ** n) - (((1-5**0.5)/2) ** n))/5**0.5)
+while n < limit:
+    re = complex(((((1+5**0.5)/2) ** n) - (((1-5**0.5)/2) ** n))/5**0.5)
+    x = np.append(x, re.real)
+    y = np.append(y, re.imag)
+    n += per
 
-plt.plot('ro')
+plt.ylabel('Imaginary number')
+plt.xlabel('Real number')
+plt.plot(x, y)
+plt.plot([0, re.real], [0, 0], color='#d1d1d1')
 plt.show()
