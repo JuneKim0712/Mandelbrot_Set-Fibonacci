@@ -1,8 +1,9 @@
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
+import numpy as np
 
-global golden_ratio, sr5
 
-golden_ratio = 1.61803398875
-sr5 = 2.23606797749979
 
-def binetFormula(n): return ((golden_ratio ** n) - (golden_ratio ** n))/sr5
+def bn(n): return complex(((((1+5**0.5)/2) ** n) - (((1-5**0.5)/2) ** n))/5**0.5)
+
+plt.plot('ro')
+plt.show()
