@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
- 
+
 
 def ms(c):
-    t = 40
+    t = 50
     z = np.array([0], dtype=complex)
     an = complex(0)
     while t > 0:
@@ -23,6 +23,7 @@ def click(event):
 def input(event):
     x = event.xdata
     y = event.ydata
+    print(x)
     plt.cla()
     isStable, d = ms(complex(x, y))
     if isStable == True:
