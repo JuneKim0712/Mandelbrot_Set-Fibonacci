@@ -23,7 +23,6 @@ def click(event):
 def input(event):
     x = event.xdata
     y = event.ydata
-    print(x)
     plt.cla()
     isStable, d = ms(complex(x, y))
     if isStable == True:
