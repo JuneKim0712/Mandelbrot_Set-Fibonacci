@@ -13,7 +13,7 @@ def comfib(per=0.01, limit=5, mode='nonlive'):
             n += per
         plt.ylabel('Imaginary number')
         plt.xlabel('Real number')
-        plt.plot(x, y, 'ro', markersize=0.1)
+        plt.plot(x, y, markersize=0.1)
         plt.plot([0, re.real], [0, 0], color='#d1d1d1')
         plt.show()
         return
@@ -48,3 +48,6 @@ def ncomfib(per_n=0.01, limit=-5):
     plt.plot(x, y)
     plt.plot([0, re.real], [0, 0], color='#d1d1d1')
     plt.show()
+
+if __name__ == "__main__":
+    comfib(per = 0.003, limit=15)
