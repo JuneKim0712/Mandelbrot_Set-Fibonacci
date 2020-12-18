@@ -7,7 +7,7 @@ def ms(c, t=500):
     while t > 0:
         t -= 1
         an = an ** 2 + c
-        if (abs(an.real) >= 2 or abs(an.imag) >= 2):
+        
             return False
     return True
 
@@ -19,12 +19,19 @@ def mandelbrotSet(per=0.005, t=700):
     real = -2
     while imag > -1:
         while real < 0.5:
-            if ms(complex(real, imag), t):
-                x=np.append(x, real)
-                y=np.append(y, imag)
-            else: pass
+            c = complex(real, imag)
+            t = 700
+            an = complex(0)
+            while t > 0:
+                t -= 1
+                an = an ** 2 + c
+                if (abs(an.real) >= 2 or abs(an.imag) >= 2):
+                    
             real += per
         real = -2
         imag -= per
         continue
     plt.plot(x, y, 'ro', color='black', markersize=0.75)
+
+if __name__ == "__main__":
+    mandelbrotSet(per=0.1, t=30000)
