@@ -2,15 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def ms(c, t=500):
-    an = complex(0)
-    while t > 0:
-        t -= 1
-        an = an ** 2 + c
-        
-            return False
-    return True
-
 def mandelbrotSet(per=0.005, t=700):
     x = np.array([], dtype=float)
     y = np.array([], dtype=float)
@@ -20,18 +11,25 @@ def mandelbrotSet(per=0.005, t=700):
     while imag > -1:
         while real < 0.5:
             c = complex(real, imag)
-            t = 700
+            show_t = t
             an = complex(0)
-            while t > 0:
-                t -= 1
-                an = an ** 2 + c
-                if (abs(an.real) >= 2 or abs(an.imag) >= 2):
-                    
+            while True:
+                if show_t == 0:
+                    x=np.append(x, real)
+                    y=np.append(y, imag)
+                    break
+                else:
+                    show_t -= 1
+                    an = an ** 2 + c
+                    if (abs(an.real) >= 2 or abs(an.imag) >= 2):
+                        break
+                    else: continue
             real += per
+            continue
         real = -2
         imag -= per
         continue
     plt.plot(x, y, 'ro', color='black', markersize=0.75)
 
 if __name__ == "__main__":
-    mandelbrotSet(per=0.1, t=30000)
+    mandelbrotSet(per=0.1, t=300000)
