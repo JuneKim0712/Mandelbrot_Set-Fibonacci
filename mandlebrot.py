@@ -21,6 +21,8 @@ def click(event):
     return
  
 def input(event):
+    if event.xdata == None:
+        return
     x = event.xdata
     y = event.ydata
     plt.cla()
