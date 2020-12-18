@@ -48,6 +48,3 @@ def ncomfib(per_n=0.01, limit=-5):
     plt.plot(x, y)
     plt.plot([0, re.real], [0, 0], color='#d1d1d1')
     plt.show()
-
-if __name__ == "__main__":
-    comfib(per = 0.003, limit=15)
