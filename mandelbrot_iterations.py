@@ -47,6 +47,3 @@ def p(c):
     plt.connect('button_press_event', click)
     plt.show()
  
- 
-if __name__ == "__main__":
-    p(0)
