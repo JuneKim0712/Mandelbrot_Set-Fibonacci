@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+img = plt.imread.jpg')
 def ms(c):
     t = 50
     z = np.array([0], dtype=complex)
@@ -9,7 +10,7 @@ def ms(c):
     while t > 0:
         t -= 1
         an = an ** 2 + c
-        if (abs(an.real) >= 1 or abs(an.imag) >= 1):
+        if (abs(an.real) >= 2 or abs(an.imag) >= 2):
             return [False, z]
         if an in z[:-1]:
             return [True, z]
@@ -26,12 +27,13 @@ def input(event):
     x = event.xdata
     y = event.ydata
     plt.cla()
+    plt.imshow(img, extent=[-2, -1, 1, 1])
     isStable, d = ms(complex(x, y))
     if isStable == True:
         plt.title('stable')
     else:
         plt.title('unstable')
-    plt.plot([-1, 1], [0, 0], color='black')
+    plt.plot([-2, 1], [0, 0], color='black')
     plt.plot([0, 0], [1, -1], color='black')
     plt.plot(d.real, d.imag, '-o', markersize=6, markerfacecolor='gray', color='black')
     plt.plot(x, y, 'ro', color='red', markersize=6)
@@ -39,7 +41,7 @@ def input(event):
  
 def p(c):
     plt.title('stable')
-    plt.plot([-1, 1], [0, 0], color='black')
+    plt.plot([-2, 1], [0, 0], color='black')
     plt.plot([0, 0], [1, -1], color='black')
     d = ms(c)
     plt.plot(d[1].real, d[1].imag, '-o', markersize=6, markerfacecolor='gray', color='black')
