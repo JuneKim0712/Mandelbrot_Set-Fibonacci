@@ -29,5 +29,5 @@ def mandelbrotSet(per=0.005, t=700):
         imag = 1
         real += per
         continue
-    plt.plot(x, y, 'ro', color='black', markersize=0.4)
+    plt.plot(x, y, 'ro', color='black', markersize=0.75)
     plt.show()
