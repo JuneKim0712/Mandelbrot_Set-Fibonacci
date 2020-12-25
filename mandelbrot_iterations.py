@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+global n
 def ms(c):
-    t = 50
+    t = 10000
     z = np.array([0], dtype=complex)
     an = complex(0)
     while t > 0:
@@ -17,23 +18,32 @@ def ms(c):
     return [True, z]
  
 def click(event):
-    plt.connect('motion_notify_event', input)
+    try:
+        del n
+        print(1)
+    except:
+        global n
+        n=plt.connect('motion_notify_event', input)
+        print(2)
     return
  
 def input(event):
     if event.xdata == None:
         return
     x = event.xdata
+    
     y = event.ydata
     plt.cla()
     isStable, d = ms(complex(x, y))
     if isStable == True:
+        color='black'
         plt.title('stable')
     else:
+        color='red'
         plt.title('unstable')
     plt.plot([-1, 1], [0, 0], color='black')
     plt.plot([0, 0], [1, -1], color='black')
-    plt.plot(d.real, d.imag, '-o', markersize=6, markerfacecolor='gray', color='black')
+    plt.plot(d.real, d.imag, '-o', markersize=6, markerfacecolor='grey', color=color)
     plt.plot(x, y, 'ro', color='red', markersize=6)
     event.canvas.draw()
  
