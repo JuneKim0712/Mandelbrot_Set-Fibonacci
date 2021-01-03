@@ -2,21 +2,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def mandelbrotSet(per=0.005, t=700):
-    x = np.array([], dtype=float)
-    y = np.array([], dtype=float)
+def mandelbrotSet(per=0.001, t=2000):
+    p=0
     plt.plot([1, -2], [1, -1], 'ro', markersize=0)
-    imag =1
-    real = -2
-    while real < 0.5:
-        while imag > -1:
+    plt.axes().set_aspect('equal')
+    x=0
+    y=0
+    for real in np.arange(-2, 0.42, per):
+        p+=per
+        print(p/0.025)
+        plt.plot(x, y, 'ro', color='black', markersize=1)
+        for imag in np.arange(-1, 1, per):
             c = complex(real, imag)
             show_t = t
             an = complex(0)
             while True:
                 if show_t == 0:
-                    x=np.append(x, real)
-                    y=np.append(y, imag)
+                    x=an.real
+                    y=an.imag
                     break
                 else:
                     show_t -= 1
@@ -24,10 +27,6 @@ def mandelbrotSet(per=0.005, t=700):
                     if (abs(an.real) >= 2 or abs(an.imag) >= 2):
                         break
                     else: continue
-            imag -= per
-            continue
-        imag = 1
-        real += per
-        continue
-    plt.plot(x, y, 'ro', color='black', markersize=0.75)
     plt.show()
+if __name__ == "__main__":
+    mandelbrotSet()

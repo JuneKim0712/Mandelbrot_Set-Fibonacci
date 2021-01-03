@@ -1,5 +1,2 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
-
-plt.plot([1], [1], 'ro', markerfacecolor='')
+for i in range(1, 10000):
+    a=a*a+a
