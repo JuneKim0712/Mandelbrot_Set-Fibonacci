@@ -1,2 +1,3 @@
-for i in range(1, 10000):
-    a=a*a+a
+import matplotlib.pyplot as plt
+plt.plot(1, 1, 'ro')
+plt.show()
