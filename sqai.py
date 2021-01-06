@@ -11,8 +11,8 @@ class msi:
         plt.plot(self.x1, self.x2, color='black')
         self.clicked=False
         plt.title('stable')
-        plt.plot([-2, 2], [0, 0], color='black')
-        plt.plot([0, 0], [2, -2], color='black')
+        plt.plot([-1.25, 1.25], [0, 0], color='black')
+        plt.plot([0, 0], [1.25, -1.25], color='black')
         plt.axes().set_aspect('equal')
         plt.connect('button_press_event', self.click)
         plt.connect('motion_notify_event', self.input)
@@ -22,7 +22,7 @@ class msi:
     def click(self, event):
         if self.clicked == True:
             self.clicked = False
-        else:
+        elif event.dblclick==True:
             self.clicked = True
         return
  
@@ -35,17 +35,18 @@ class msi:
         plt.plot(self.x1, self.x2, color='black')
         plt.plot([-2, 2], [0, 0], color='black')
         plt.plot([0, 0], [2, -2], color='black')
-        t=50
+        t=40
         d=np.array([complex(x, y)])
         plt.title('stable')
         while t > 0:
             t -= 1
             an=d[-1] ** 2
-            if an > 1:
+            if abs(d[-1]) > 1:
+                d[:-1]
                 plt.title('unstable')
                 break
             else: d=np.append(d, an)
-        plt.plot(d.real, d.imag, '-o', color='black', markersize='4')
+        plt.plot(d.real, d.imag, '-o', color='black', markersize=4)
         plt.plot(x, y, 'ro', color='red', markersize=6)
         event.canvas.draw()
         return
