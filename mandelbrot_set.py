@@ -20,9 +20,10 @@ def mandelbrotSet(per=0.01, t=2000):
                 else:
                     show_t -= 1
                     an = an ** 2 + c
-                    if (abs(an.real)+abs(an.imag)>=4):
+                    if abs(an)>=4:
                         break
                     else: continue
     plt.show()
+
 if __name__ == "__main__":
-    mandelbrotSet()
+    mandelbrotSet(per=0.005)
